@@ -1,0 +1,41 @@
+{
+    "location": {
+        "name": "Kulynychi",
+        "region": "Kharkivs'ka Oblast'",
+        "country": "Ukraine",
+        "lat": 50.02,
+        "lon": 36.37,
+        "tz_id": "Europe/Kiev",
+        "localtime_epoch": 1671373590,
+        "localtime": "2022-12-18 16:26"
+    },
+    "current": {
+        "last_updated_epoch": 1671372900,
+        "last_updated": "2022-12-18 16:15",
+        "temp_c": -0.9,
+        "temp_f": 30.4,
+        "is_day": 0,
+        "condition": {
+            "text": "Overcast",
+            "icon": "//cdn.weatherapi.com/weather/64x64/night/122.png",
+            "code": 1009
+        },
+        "wind_mph": 15.7,
+        "wind_kph": 25.2,
+        "wind_degree": 281,
+        "wind_dir": "WNW",
+        "pressure_mb": 1022.0,
+        "pressure_in": 30.18,
+        "precip_mm": 0.0,
+        "precip_in": 0.0,
+        "humidity": 80,
+        "cloud": 100,
+        "feelslike_c": -7.1,
+        "feelslike_f": 19.2,
+        "vis_km": 10.0,
+        "vis_miles": 6.0,
+        "uv": 1.0,
+        "gust_mph": 18.1,
+        "gust_kph": 29.2
+    }
+}

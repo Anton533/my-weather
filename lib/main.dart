@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_weather/provider.dart';
 import 'package:my_weather/widgets/main_screen_widget.dart';
+import 'package:my_weather/widgets/weather_details.dart/weather_details_widget.dart';
+
+import 'widgets/weather_details.dart/weather_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +19,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreenWidget(),
+      // home: const MainScreenWidget(),
+      routes: {
+        '/': (context) => const MainScreenWidget(),
+        '/current_weather': (context) => NotifierProvider(
+              create: () => WeatherModel(),
+              child: const WeatherDetailsWidget(),
+            ),
+      },
+      initialRoute: '/current_weather',
     );
   }
 }
+
 
 // class MyHomePage extends StatefulWidget {
 //   const MyHomePage({super.key, required this.title});

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_weather/domain/api_client/api_client.dart';
+import 'package:my_weather/domain/entity/current_response.dart';
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({super.key});
@@ -27,35 +29,36 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: TextField(
-                  decoration: InputDecoration(border: OutlineInputBorder())),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
+              ),
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('Search')),
+            ElevatedButton(
+              onPressed: () =>
+                  Navigator.of(context).pushNamed('/current_weather'),
+              child: const Text(
+                'Search',
+                // style: TextStyle(
+                //   color: Colors.black.withOpacity(0.05),
+                // ),
+              ),
+            ),
             const SizedBox(height: 50),
             ElevatedButton(
-                onPressed: () {},
-                child: const Text('Detect location automatically')),
+              onPressed: () => loadWeather('48.4655696,34.9810197'),
+              child: const Text('Detect location automatically'),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.today),
-            label: 'Today',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.timelapse),
-            label: '24 houers',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.next_week),
-            label: '7 days',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        // onTap: _onItemTapped,
-      ),
     );
+  }
+
+  Future<CurrentWeatherResponse> loadWeather(String q) async {
+    final apiClient = ApiClient();
+
+    final currentWeather = await apiClient.getCurrentWeather(q);
+    return currentWeather;
   }
 }
