@@ -100,10 +100,10 @@ h5,
 h6 {
   font-family: inherit;
   font-weight: 600;
-
   color: rgba(255, 255, 255, 0.87);
 
   margin: 0;
+  margin-block-end: 20px;
 }
 
 header {
@@ -134,4 +134,10 @@ footer {
 
 #root *:last-child {
   margin-top: auto;
+}
+
+.day {
+  border: 1px solid tomato;
+  padding: 10px;
+  margin-block-end: 10px;
 }
