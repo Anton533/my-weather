@@ -10,7 +10,7 @@ function Main() {
       {weatherData ? (
         <WeatherDisplay data={weatherData} />
       ) : (
-        <p>Завантаження даних...</p>
+        <p>Loading data...</p>
       )}
     </main>
   );

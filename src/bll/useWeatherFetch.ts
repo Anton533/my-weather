@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { getWeather } from "../dal/api";
+import { type getWeatherData } from "../dal/api.ts";
 
 export function useWeatherFetch() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<getWeatherData | null>(null);
 
   useEffect(() => {
     getWeather()

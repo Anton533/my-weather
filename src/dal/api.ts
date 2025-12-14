@@ -23,9 +23,10 @@ type DayTemperature = {
   Maximum: { Value: number; Unit: string; UnitType: number };
 };
 
-type DayItem = {
+export type DayItem = {
   Date: string;
   Day: Day;
+  EpochDate: number;
   Night: Night;
   Temperature: DayTemperature;
 };
@@ -42,18 +43,24 @@ type Headline = {
   Text: string;
 };
 
-export type getWeather = {
+export type getWeatherData = {
   DailyForecasts: Array<DayItem>;
   Headline: Headline;
 };
 
+export type WeatherDisplayData = {
+  data: getWeatherData | null;
+};
+
 export function getWeather() {
-  const promise: Promise<getWeather> = fetch(url, options).then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+  const promise: Promise<getWeatherData> = fetch(url, options).then(
+    (response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
     }
-    return response.json();
-  });
+  );
 
   return promise;
 }

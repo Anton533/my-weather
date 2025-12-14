@@ -1,18 +1,8 @@
-import { type getWeather } from "../dal/api.ts";
+import { type WeatherDisplayData, type DayItem } from "../dal/api.ts";
 
-function getDayOfWeek(dateString: string) {
-  const date = new Date(dateString);
-
-  const options = {
-    weekday: "long",
-  };
-
-  return date.toLocaleDateString("uk-UA", options);
-}
-
-export function WeatherDisplay({ data }: getWeather) {
+export function WeatherDisplay({ data }: WeatherDisplayData) {
   if (!data || !data.DailyForecasts || data.DailyForecasts.length === 0) {
-    return <p>Немає даних для відображення.</p>;
+    return <p>There is no data to display...</p>;
   }
 
   function fahrenheitToCelsius(fahrenheitValue: number) {
@@ -26,7 +16,7 @@ export function WeatherDisplay({ data }: getWeather) {
     <>
       <h2>{headline}</h2>
       <ul>
-        {forecasts.map((forecast) => {
+        {forecasts.map((forecast: DayItem) => {
           const dayName = getDayOfWeek(forecast.Date).toLocaleUpperCase();
 
           const maxTemp = fahrenheitToCelsius(
@@ -52,4 +42,14 @@ export function WeatherDisplay({ data }: getWeather) {
       </ul>
     </>
   );
+}
+
+function getDayOfWeek(dateString: string) {
+  const date = new Date(dateString);
+
+  const options = {
+    weekday: "long" as const,
+  };
+
+  return date.toLocaleDateString("uk-UA", options);
 }
