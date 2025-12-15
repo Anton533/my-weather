@@ -1,9 +1,7 @@
-import { useWeatherFetch } from "../bll/useWeatherFetch";
 import { WeatherDisplay } from "../ui/WeatherDisplay";
+import { type WeatherDisplayData } from "../dal/api.ts";
 
-function Main() {
-  const { weatherData } = useWeatherFetch();
-
+function Main({ weatherData }: WeatherDisplayData) {
   return (
     <main>
       <h1>Прогноз погоди для Дніпра 🌤️</h1>

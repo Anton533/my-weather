@@ -78,9 +78,9 @@ button {
   margin-inline: auto;
 }
 button:hover {
-  color: var(--clr-dark);
-  background-color: var(--clr-primary);
-  border-color: var(--clr-primary);
+  color: #252525;
+  background-color: #fcd656;
+  border-color: #fcd656;
 }
 ul {
   list-style: none;
@@ -106,10 +106,6 @@ h6 {
   margin-block-end: 20px;
 }
 
-header {
-  padding: 20px;
-  text-align: center;
-}
 main {
   padding-inline: 2rem;
 }
@@ -137,7 +133,20 @@ footer {
 }
 
 .day {
+  max-width: 460px;
   border: 1px solid tomato;
+
   padding: 10px;
+  margin-inline: auto;
   margin-block-end: 10px;
+}
+
+.header {
+  display: flex;
+  gap: 5px;
+  padding: 20px;
+}
+
+.header > * {
+  flex: 1;
 }

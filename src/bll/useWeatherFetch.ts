@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getWeather } from "../dal/api";
+import { getWeatherByDay } from "../dal/api";
 import { type getWeatherData } from "../dal/api.ts";
 
-export function useWeatherFetch() {
+export function useWeatherFetch(days: number) {
   const [weatherData, setWeatherData] = useState<getWeatherData | null>(null);
 
   useEffect(() => {
-    getWeather()
+    getWeatherByDay(days)
       .then((data) => {
         console.log(data);
         setWeatherData(data);
       })
       .catch((err) => console.error("Error retrieving AccuWeather data:", err));
-  }, []);
+  }, [days]);
 
   return { weatherData };
 }

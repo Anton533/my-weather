@@ -1,8 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const LOCATION_KEY = "322722"; // Dnipro
 
-const url = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${LOCATION_KEY}?apikey=${API_KEY}`;
-
 const options = {
   method: "GET",
 };
@@ -52,7 +50,24 @@ export type WeatherDisplayData = {
   data: getWeatherData | null;
 };
 
-export function getWeather() {
+export function getWeatherByDay(days: number) {
+  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${LOCATION_KEY}?apikey=${API_KEY}`;
+
+  const promise: Promise<getWeatherData> = fetch(url, options).then(
+    (response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    }
+  );
+
+  return promise;
+}
+
+export function getWeatherByHours(days: number) {
+  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${LOCATION_KEY}?apikey=${API_KEY}`;
+
   const promise: Promise<getWeatherData> = fetch(url, options).then(
     (response) => {
       if (!response.ok) {
