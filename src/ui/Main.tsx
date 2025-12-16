@@ -1,12 +1,12 @@
 import { WeatherDisplay } from "../ui/WeatherDisplay";
 import { type WeatherDisplayData } from "../dal/api.ts";
 
-function Main({ weatherData }: WeatherDisplayData) {
+function Main({ weatherData, weatherHoursData }: WeatherDisplayData) {
   return (
     <main>
-      <h1>Прогноз погоди для Дніпра 🌤️</h1>
+      <h1 className="title">Прогноз погоди для Дніпра 🌤️</h1>
       {weatherData ? (
-        <WeatherDisplay data={weatherData} />
+        <WeatherDisplay data={weatherData} dataHours={weatherHoursData} />
       ) : (
         <p>Loading data...</p>
       )}

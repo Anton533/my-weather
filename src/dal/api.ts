@@ -65,17 +65,15 @@ export function getWeatherByDay(days: number) {
   return promise;
 }
 
-export function getWeatherByHours(days: number) {
-  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${LOCATION_KEY}?apikey=${API_KEY}`;
+export function getWeatherByHours() {
+  const url = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${LOCATION_KEY}?apikey=${API_KEY}`;
 
-  const promise: Promise<getWeatherData> = fetch(url, options).then(
-    (response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.json();
+  const promise = fetch(url, options).then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-  );
+    return response.json();
+  });
 
   return promise;
 }

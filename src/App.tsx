@@ -4,21 +4,22 @@ import Main from "./ui/Main";
 
 import { useState } from "react";
 import { useWeatherFetch } from "../src/bll/useWeatherFetch";
+import { useWeatherFetchHours } from "./bll/useWeatherFetch";
 
 function App() {
   const [days, setDay] = useState(1);
   const { weatherData } = useWeatherFetch(days);
 
+  const { weatherHoursData } = useWeatherFetchHours();
+
   const handleDaySelect = (day: number | null): void => {
-    console.log(day);
     setDay(day);
   };
 
   return (
     <>
-      <p>{days}</p>
       <Header onDaySelected={handleDaySelect} />
-      <Main weatherData={weatherData} />
+      <Main weatherData={weatherData} weatherHoursData={weatherHoursData} />
       <Footer />
     </>
   );
