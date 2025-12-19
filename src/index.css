@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark; */
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -123,7 +123,6 @@ footer {
 
   background-color: #f9fafb;
   color: #212529;
-  min-height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -185,7 +184,8 @@ p {
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 5px;
   margin-bottom: 30px;
   background-color: #e9ecef;
   border-radius: 20px;
@@ -206,17 +206,18 @@ p {
   white-space: nowrap;
 }
 
-.header button:nth-child(1) {
+.header button.active {
   background-color: #007bff;
   color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
 }
-
-.header button:nth-child(2) {
-  background-color: #007bff;
+.header button.active:hover {
   color: #ffffff;
-  /* background-color: transparent; */
-  /* color: #6c757d; */
+}
+
+.header button {
+  background-color: transparent;
+  color: #6c757d;
 }
 
 .header button:hover {

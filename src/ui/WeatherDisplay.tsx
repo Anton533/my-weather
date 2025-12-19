@@ -1,6 +1,6 @@
 import { type WeatherDisplayData, type DayItem } from "../dal/api.ts";
 
-export function WeatherDisplay({ data, dataHours }: WeatherDisplayData) {
+export function WeatherDisplay({ data, dataHours, city }: WeatherDisplayData) {
   if (!data || !data.DailyForecasts || data.DailyForecasts.length === 0) {
     return <p>There is no data to display...</p>;
   }
@@ -72,6 +72,7 @@ export function WeatherDisplay({ data, dataHours }: WeatherDisplayData) {
           );
           return (
             <li key={forecast.EpochDate} className="day">
+              <p>{city}</p>
               <p>{dayName}</p>
               <p>Дата: {new Date(forecast.Date).toLocaleDateString()}</p>
               <p>🌡️ Максимальна температура: {maxTemp}°C</p>

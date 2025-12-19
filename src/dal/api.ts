@@ -1,6 +1,5 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
-const LOCATION_KEY = "322722"; // Dnipro
-
+// const LOCATION_KEY = "322722"; // Dnipro
 const options = {
   method: "GET",
 };
@@ -50,8 +49,8 @@ export type WeatherDisplayData = {
   data: getWeatherData | null;
 };
 
-export function getWeatherByDay(days: number) {
-  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${LOCATION_KEY}?apikey=${API_KEY}`;
+export function getWeatherByDay(days: number, key: number) {
+  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${key}?apikey=${API_KEY}`;
 
   const promise: Promise<getWeatherData> = fetch(url, options).then(
     (response) => {
@@ -65,8 +64,21 @@ export function getWeatherByDay(days: number) {
   return promise;
 }
 
-export function getWeatherByHours() {
-  const url = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${LOCATION_KEY}?apikey=${API_KEY}`;
+export function getWeatherByHours(key: number) {
+  const url = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${key}?apikey=${API_KEY}`;
+
+  const promise = fetch(url, options).then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  });
+
+  return promise;
+}
+
+export function getLocationByGeoposition(lat: number, lon: number) {
+  const url = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${lat},${lon}&apikey=${API_KEY}`;
 
   const promise = fetch(url, options).then((response) => {
     if (!response.ok) {
