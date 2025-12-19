@@ -5,9 +5,9 @@ export function WeatherDisplay({ data, dataHours, city }: WeatherDisplayData) {
     return <p>There is no data to display...</p>;
   }
 
-  function fahrenheitToCelsius(fahrenheitValue: number) {
-    return Math.round(((fahrenheitValue - 32) * 5) / 9);
-  }
+  // function fahrenheitToCelsius(fahrenheitValue: number) {
+  //   return Math.round(((fahrenheitValue - 32) * 5) / 9);
+  // }
 
   const forecasts = data.DailyForecasts;
   const headline = data.Headline.Text;
@@ -32,7 +32,7 @@ export function WeatherDisplay({ data, dataHours, city }: WeatherDisplayData) {
                 <div>
                   <p>{formattedTime}</p>
                   <p className="hourly-list__item-temp">
-                    {fahrenheitToCelsius(hour.Temperature.Value)}
+                    {hour.Temperature.Value}
                     {"°"}
                   </p>
                 </div>
@@ -64,12 +64,8 @@ export function WeatherDisplay({ data, dataHours, city }: WeatherDisplayData) {
         {forecasts.map((forecast: DayItem) => {
           const dayName = getDayOfWeek(forecast.Date).toLocaleUpperCase();
 
-          const maxTemp = fahrenheitToCelsius(
-            forecast.Temperature.Maximum.Value
-          );
-          const minTemp = fahrenheitToCelsius(
-            forecast.Temperature.Minimum.Value
-          );
+          const maxTemp = forecast.Temperature.Maximum.Value;
+          const minTemp = forecast.Temperature.Minimum.Value;
           return (
             <li key={forecast.EpochDate} className="day">
               <p>{city}</p>

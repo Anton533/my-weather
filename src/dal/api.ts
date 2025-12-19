@@ -50,7 +50,7 @@ export type WeatherDisplayData = {
 };
 
 export function getWeatherByDay(days: number, key: number) {
-  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${key}?apikey=${API_KEY}`;
+  const url = `https://dataservice.accuweather.com/forecasts/v1/daily/${days}day/${key}?apikey=${API_KEY}&language=uk-ua&metric=true`;
 
   const promise: Promise<getWeatherData> = fetch(url, options).then(
     (response) => {
@@ -65,7 +65,7 @@ export function getWeatherByDay(days: number, key: number) {
 }
 
 export function getWeatherByHours(key: number) {
-  const url = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${key}?apikey=${API_KEY}`;
+  const url = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${key}?apikey=${API_KEY}&language=uk-ua&metric=true`;
 
   const promise = fetch(url, options).then((response) => {
     if (!response.ok) {
@@ -78,7 +78,7 @@ export function getWeatherByHours(key: number) {
 }
 
 export function getLocationByGeoposition(lat: number, lon: number) {
-  const url = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${lat},${lon}&apikey=${API_KEY}`;
+  const url = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${lat},${lon}&apikey=${API_KEY}&language=uk-ua&metric=true`;
 
   const promise = fetch(url, options).then((response) => {
     if (!response.ok) {

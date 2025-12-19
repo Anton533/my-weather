@@ -39,7 +39,8 @@ export function useWeatherFetchHours(key: number) {
 
 /////////////////////
 
-const KHARKIV_COORDS = { lat: 50.0211959, lon: 36.3684928 };
+// const KHARKIV_COORDS = { lat: 50.0211959, lon: 36.3684928 };
+const KHARKIV_COORDS = { lat: 50.021, lon: 36.368 };
 
 export function useLocationByGeoposition() {
   const [key, setKey] = useState(349727);
